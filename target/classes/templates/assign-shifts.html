@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Restaurant</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body>
+<div class="sidebar">
+    <ul>
+        <li><a href="/view-schedule">Cronograma</a></li>
+        <li><a href="/assign-shifts">Asignación de turnos</a></li>
+        <li><a href="/book-table">Reserva de mesa</a></li>
+        <li><a href="/manage-orders">trabajar con pedidos</a></li>
+        <li><a href="/login">Salida</a></li>
+    </ul>
+</div>
+
+<div class="main-content">
+    <div id="content">
+        <h2>asignación de turno</h2>
+        <form action="#" th:action="@{/assign-shift}" method="post">
+            <label for="staff_id">Elige un empleado:</label>
+            <select id="staff_id" name="staff_id">
+                <option th:each="staff : ${staffs}" th:value="${staff.id}" th:text="${staff.name}"></option>
+            </select>
+            <label for="date">Seleccione una fecha:</label>
+            <input type="date" id="date" name="date"/>
+            <br>
+            <button type="submit">Nombrar</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

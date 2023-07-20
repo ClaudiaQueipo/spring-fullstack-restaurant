@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Restaurant</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+
+    <style>
+        .center-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            width: 50%;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        .back-button {
+            text-decoration: none;
+            display: inline-block;
+            padding: 15px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+<h1>Detalles del plato</h1>
+<div class="center-div">
+    <h2 th:text="${dish.name}"></h2>
+    <p th:text="${dish.description}"></p>
+    <p th:text="${dish.recipe}"></p>
+    <a class="back-button" href="/kitchen">Atrás</a>
+</div>
+</body>
+</html>

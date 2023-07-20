@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Restaurant</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body>
+
+<div id="content">
+    <table>
+        <thead>
+        <tr>
+            <th>Orden</th>
+            <th>Plato</th>
+            <th>Estado</th>
+            <th>Cambiar Estado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="orderedDish : ${orderedDishes}" th:if="${orderedDish.status} == 'Принят'">
+            <td th:text="${orderedDish.order.id}"></td>
+            <td>
+                <a th:href="@{/kitchen/{id}/recipe(id=${orderedDish.dish.id})}"
+                   th:text="${orderedDish.dish.name}"></a>
+            </td>
+            <td th:text="${orderedDish.status}"></td>
+            <td>
+                <form th:action="@{'/update-dish-status/' + ${orderedDish.id}}" method="post">
+                    <select name="status">
+                        <option value="Listo">Listo</option>
+                    </select>
+                    <button type="submit">Actualizar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer>
+    <button onclick="location.href='/login'">Salir</button>
+</footer>
+
+</body>
+</html>
